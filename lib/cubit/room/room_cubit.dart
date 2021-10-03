@@ -11,30 +11,28 @@ class RoomCubit extends Cubit<RoomState> {
   RoomCubit() : super(RoomState(rooms: []));
 
   addToRoom(Student student, int roomId) {
-    List<Room> relatedRooms = state.rooms
-        .where((r) => r.id == roomId && (r.date == null || isActiveClass(r)))
-        .toList();
-    relatedRooms.forEach((r) {
-      r.students.add(student.copyWith());
-    });
-    emit(RoomState(rooms: state.rooms));
+    emit(RoomState(
+      rooms: state.rooms
+        ..where((r) => r.id == roomId && (r.date == null || isActiveClass(r)))
+        ..forEach((r) => r.students.add(student.copyWith())),
+    ));
   }
 
   removeFromRoom(int studentId, int roomId) {
-    List<Room> relatedRooms = state.rooms
-        .where((r) => r.id == roomId && (r.date == null || isActiveClass(r)))
-        .toList();
-    relatedRooms.forEach((r) {
-      r.students.removeWhere((s) => s.id == studentId);
-    });
-    emit(RoomState(rooms: state.rooms));
+    emit(RoomState(
+      rooms: state.rooms
+        ..where((r) => r.id == roomId && (r.date == null || isActiveClass(r)))
+        ..forEach((r) => r.students.removeWhere((s) => s.id == studentId)),
+    ));
   }
 
   removeFromAllRooms(int studentId) {
-    state.rooms.forEach((Room room) {
-      room.students.removeWhere((s) => s.id == studentId);
-    });
-    emit(RoomState(rooms: state.rooms));
+    emit(RoomState(
+      rooms: state.rooms
+        ..forEach(
+          (Room room) => room.students.removeWhere((s) => s.id == studentId),
+        ),
+    ));
   }
 
   addRoom(Room room) {
