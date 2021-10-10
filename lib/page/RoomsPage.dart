@@ -1,5 +1,7 @@
+import 'package:cubitroom/const.dart';
 import 'package:cubitroom/cubit/room/room_cubit.dart';
 import 'package:cubitroom/cubit/teacher/teacher_cubit.dart';
+import 'package:cubitroom/widget/dialogs/addRoomDialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,7 +19,7 @@ class RoomsPage extends StatelessWidget {
           // studentAction(context),
         ],
       ),
-      body: Column(
+      body: Stack(
         children: [
           Container(
             margin: EdgeInsets.all(8),
@@ -59,20 +61,30 @@ class RoomsPage extends StatelessWidget {
               },
             ),
           ),
-          TextButton.icon(
-            onPressed: () {
-              Room room = Room(
-                students: [],
-                name: 'history',
-                teacher: Teacher(name: 'as', id: 145),
-              );
-
-              UseRoomCubit().addRoom(context, room);
-              // useAddRoom(context, room);
-            },
-            icon: Icon(Icons.add),
-            label: Text('add'),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: btn(
+              context,
+              Colors.lightGreen,
+              'Add Room',
+              Icons.room,
+              (context) => addRoomDialog(context),
+            ),
           ),
+          // TextButton.icon(
+          //   onPressed: () {
+          //     Room room = Room(
+          //       students: [],
+          //       name: 'history',
+          //       teacher: Teacher(name: 'as', id: 145),
+          //     );
+
+          //     UseRoomCubit().add(context, room);
+          //     // useAddRoom(context, room);
+          //   },
+          //   icon: Icon(Icons.add),
+          //   label: Text('add'),
+          // ),
         ],
       ),
     );

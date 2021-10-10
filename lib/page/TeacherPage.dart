@@ -1,5 +1,6 @@
 import 'package:cubitroom/cubit/teacher/teacher_cubit.dart';
 import 'package:cubitroom/widget/allTeachers.dart';
+import 'package:cubitroom/widget/dialogs/addTeacherDialog.dart';
 import 'package:flutter/material.dart';
 
 import '../Navigator.dart';
@@ -33,7 +34,7 @@ class TeacherPage extends StatelessWidget {
               Colors.lightGreen,
               'Add Teacher',
               Icons.add,
-              (context) => UseTeacherCubit().add(context, randomTeacher()),
+              (context) => addTeacherDialog(context),
             ),
           ),
         ],

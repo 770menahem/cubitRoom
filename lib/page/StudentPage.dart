@@ -1,5 +1,5 @@
-import 'package:cubitroom/cubit/student/student_cubit.dart';
 import 'package:cubitroom/widget/AllStudents.dart';
+import 'package:cubitroom/widget/dialogs/addStudentDialog.dart';
 import 'package:flutter/material.dart';
 
 import '../Navigator.dart';
@@ -34,7 +34,7 @@ class StudentPage extends StatelessWidget {
               Colors.lightGreen,
               'Add Student',
               Icons.add,
-              (context) => UseStudentCubit().add(context, randomStudent()),
+              (context) => addStudentDialog(context),
             ),
           ),
         ],

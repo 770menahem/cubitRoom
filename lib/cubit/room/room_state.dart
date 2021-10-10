@@ -55,7 +55,7 @@ class Room {
     return Room(
       id: map['id'],
       students:
-          List<Student>.from(map['students']?.map((x) => Student.fromMap(x))),
+          List<Student>.from(map['students']?.map((x) => Teacher.fromMap(x))),
       teacher: Teacher.fromMap(map['teacher']),
       name: map['name'],
       long: map['long'],

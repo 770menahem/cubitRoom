@@ -68,7 +68,7 @@ class UseRoomCubit {
     BlocProvider.of<RoomCubit>(context).removeFromAllRooms(studentId);
   }
 
-  addRoom(context, Room room) {
+  add(context, Room room) {
     BlocProvider.of<RoomCubit>(context).addRoom(room);
   }
 

@@ -1,18 +1,22 @@
 import 'package:cubitroom/cubit/teacher/teacher_cubit.dart';
+import 'package:cubitroom/widget/lang/langs.dart';
 import 'package:flutter/material.dart';
 
 import 'cubit/room/room_cubit.dart';
 import 'cubit/student/student_cubit.dart';
 
 int count = 1;
-
+Map lang = langs['en']!;
 Teacher randomTeacher() => Teacher(name: 'dsa${DateTime.now().millisecond}');
 Student randomStudent() => Student(name: 'dsa${DateTime.now().millisecond}');
 
 btn(BuildContext context, Color color, String title, IconData icon,
     Function navigation) {
   return GestureDetector(
-    onTap: () => navigation(context),
+    onTap: () {
+      lang = langs['he']!;
+      navigation(context);
+    },
     child: Card(
       color: color,
       elevation: 15,
@@ -51,26 +55,22 @@ bool activeRoomExists(r, room) =>
     r.date == room.date;
 
 List<Room> findStudentsRoom(List<Room> rooms, int studentId) {
-  var res = rooms.where((Room room) {
+  print('f');
+  return rooms.where((Room room) {
     try {
       findStudent(room, studentId);
-      return true;
-    } catch (e) {
-      return false;
-    }
-  });
-
-  return res.toList();
+      if (room.date == null) return true;
+    } catch (e) {}
+    return false;
+  }).toList();
 }
 
 List<Room> findTeachersRoom(List<Room> rooms, int teacherId) {
-  var res = rooms.where((Room room) => room.teacher.id == teacherId);
-
-  return res.toList();
+  return rooms..where((Room room) => room.teacher.id == teacherId);
 }
 
-Student? findStudentById(List<Room> rooms, int studentId) {
-  Student? student;
+Teacher? findStudentById(List<Room> rooms, int studentId) {
+  Teacher? student;
 
   rooms.forEach((room) {
     try {

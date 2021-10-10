@@ -8,14 +8,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'teacher_state.dart';
 
 class TeacherCubit extends Cubit<TeacherState> {
-  TeacherCubit() : super(TeacherState(students: []));
+  TeacherCubit() : super(TeacherState(teachers: [Teacher(name: 'as')]));
 
   addTeacher(Teacher teacher) => emit(
-        TeacherState(students: state.students..add(teacher)),
+        TeacherState(teachers: state.teachers..add(teacher)),
       );
 
   removeStudent(int id) => emit(
-        TeacherState(students: state.students..removeWhere((s) => s.id == id)),
+        TeacherState(teachers: state.teachers..removeWhere((s) => s.id == id)),
       );
 }
 

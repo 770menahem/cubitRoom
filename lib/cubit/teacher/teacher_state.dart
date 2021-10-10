@@ -1,11 +1,11 @@
 part of 'teacher_cubit.dart';
 
 class TeacherState {
-  List<Teacher> students;
+  List<Teacher> teachers;
 
-  TeacherState({required this.students});
+  TeacherState({required this.teachers});
 
-  List<Teacher> get props => students;
+  List<Teacher> get props => teachers;
 }
 
 class Teacher {
