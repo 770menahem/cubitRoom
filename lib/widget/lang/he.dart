@@ -5,5 +5,8 @@ Map he = {
   txt.addTeacher: 'המורה התווסף בהצלחה',
   txt.ok: 'אישור',
   txt.longMeating: 'אורך החוג',
-  txt.roomAdded: 'החוג התווסף בהצלחה'
+  txt.roomAdded: 'החוג התווסף בהצלחה',
+  txt.roomPage: 'חוגים',
+  txt.studentPage: 'תלמידים',
+  txt.teacherPage: 'מורים',
 };
